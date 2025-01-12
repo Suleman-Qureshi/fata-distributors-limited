@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.asd{
+    background-blend-mode: darken;
+    background: rgba(0,0,0,0.5) url(/commingsoonImg.png) 100%/cover;
+}
+.silkscreen {
+    font-family: "Silkscreen", serif;
+    }
