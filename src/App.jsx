@@ -5,9 +5,9 @@ function App() {
 
   return (
     <>
-    {/* <NavBar/> */}
-    <CommingSoonPage/>
-    {/* <Router/> */}
+    <NavBar/>
+    {/* <CommingSoonPage/> */}
+    <Router/>
     </>
   )
 }
