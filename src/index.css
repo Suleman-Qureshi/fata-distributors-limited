@@ -8,3 +8,8 @@
 .silkscreen {
     font-family: "Silkscreen", serif;
     }
+    .herobg{
+        background: url(../public/broken\ png.png);
+       background-size: contain;
+        background-position: top;
+    }
