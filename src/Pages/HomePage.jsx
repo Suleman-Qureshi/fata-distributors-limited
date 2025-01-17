@@ -3,7 +3,7 @@ import Slider from '../Components/Slider';
 function HomePage() {
   return (
     <>
-    <section className='w-screen h-screen bg-[url("herobgHome.gif")] bg-cover bg-no-repeat bg-top relative before:absolute before:w-full before:h-full bg-red-600 overflow-y-hidden'>
+    <section className='w-screen h-screen bg-[url("https://github.com/Suleman-Qureshi/fata-distributors-limited/blob/main/public/herobgHome.gif?raw=true")] bg-cover bg-no-repeat bg-top relative before:absolute before:w-full before:h-full bg-red-600 overflow-y-hidden'>
       {/* <div className='h-screen flex justify-end mr-12'>
       <img src="./png 3.png" alt="" className='h-full' />
       </div> */}
