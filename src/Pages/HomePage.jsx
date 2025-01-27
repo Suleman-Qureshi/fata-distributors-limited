@@ -6,7 +6,6 @@ function HomePage() {
     <>
     <NavBar/>
     <section className=' w-screen h-screen relative'>
-
       <Sliders/>
       <div className=' flex-col absolute w-screen h-screen top-0 flex justify-center items-center text-center gap-10 bg-slate-50 bg-opacity-10 z-10'>
         <h1 className='text-8xl font-bold text-black'>We Provide <br />The Best</h1>
