@@ -20,7 +20,7 @@ function Sliders() {
               <img src='/slide1.svg' alt='slider_1' className="w-full h-full object-cover" />
             </SwiperSlide>
            <SwiperSlide>
-              <img src='/slide2.svg' alt='slider_1' className="w-full h-full object-cover" />
+              <img src='/slide3.svg' alt='slider_1' className="w-full h-full object-cover" />
             </SwiperSlide>
         </Swiper>
       </section>
