@@ -17,7 +17,7 @@ function Sliders() {
           className="w-full h-[600px]"
         >
            <SwiperSlide>
-              <img src='./home_slider_1.svg' alt='slider_1' className="w-full h-full object-cover" />
+              <img src='/slide1.svg' alt='slider_1' className="w-full h-full object-cover" />
             </SwiperSlide>
            <SwiperSlide>
               <img src='./home_slider_2.avif' alt='slider_1' className="w-full h-full object-cover" />
