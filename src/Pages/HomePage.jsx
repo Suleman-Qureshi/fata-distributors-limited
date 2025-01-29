@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import logo from '/fata_logo.svg'; // Make sure to add your FATA logo
 
 function HomePage() {
+  const [activePage, setActivePage] = useState('home');
+
   // Ad slider images - replace these paths with your public folder image paths
   const adSlides = [
     '/slide1.svg',
@@ -12,58 +16,182 @@ function HomePage() {
     '/slide3.svg'
   ];
 
-  // Featured products - replace image paths with your product images
+  // Updated featured products data
   const featuredProducts = [
-    { id: 1, name: 'Product 1', image: '/product-1.png' },
-    // { id: 2, name: 'Product 2', image: '/product2.jpg', price: '$149' },
-    // { id: 3, name: 'Product 3', image: '/product3.jpg', price: '$199' },
-    // { id: 4, name: 'Product 4', image: '/product4.jpg', price: '$299' },
+    { 
+      id: 1, 
+      name: 'Name', 
+      description: 'Description',
+      image: '/featured-product-1.svg'
+    },
+    { 
+      id: 2, 
+      name: 'Name', 
+      description: 'Description',
+      image: '/featured-product-2.svg'
+    },
+    { 
+      id: 3, 
+      name: 'Name', 
+      description: 'Description',
+      image: '/featured-product-3.svg'
+    }
   ];
 
+  const handleNavClick = (page) => {
+    setActivePage(page);
+  };
+
   return (
-    <div className="min-h-screen">
-      {/* Ad Slider Section */}
-      <section className="pt-20">
+    <div className="min-h-screen relative">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-[#006241]">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <img src={logo} alt="FATA Logo" className="h-12" />
+            </div>
+            <div className="flex space-x-12">
+              <a 
+                href="#home" 
+                onClick={() => handleNavClick('home')}
+                className="text-white text-xl relative group"
+              >
+                Home
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                  ${activePage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                </span>
+              </a>
+              <a 
+                href="#products" 
+                onClick={() => handleNavClick('products')}
+                className="text-white text-xl relative group"
+              >
+                products
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                  ${activePage === 'products' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                </span>
+              </a>
+              <a 
+                href="#recipes" 
+                onClick={() => handleNavClick('recipes')}
+                className="text-white text-xl relative group"
+              >
+                recipes
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                  ${activePage === 'recipes' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                </span>
+              </a>
+              <a 
+                href="#contact" 
+                onClick={() => handleNavClick('contact')}
+                className="text-white text-xl relative group"
+              >
+                contact us
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                  ${activePage === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                </span>
+              </a>
+              <a 
+                href="#about" 
+                onClick={() => handleNavClick('about')}
+                className="text-white text-xl relative group"
+              >
+                about us
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                  ${activePage === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section with Slider */}
+      <section className="relative h-screen">
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000 }}
-          className="w-full h-[600px]"
+          className="w-full h-full"
         >
           {adSlides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <img src={slide} alt={`Ad ${index + 1}`} className="w-full h-full object-cover" />
+              <div className="relative w-full h-full">
+                <img src={slide} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
+                {/* Dark overlay for better text visibility */}
+                <div className="absolute inset-0 bg-black opacity-50"></div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Overlay Text - This will stay fixed while images slide */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+          <h1 className="text-7xl font-black mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+            WE PROVIDE
+          </h1>
+          <h1 className="text-7xl font-black mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
+            THE BEST
+          </h1>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#006241] text-white px-8 py-3 rounded-full text-xl hover:bg-[#005236] transition-colors"
+          >
+            EXPLORE MORE
+          </motion.button>
+        </div>
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 relative">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0 opacity-20"
+          style={{
+            backgroundImage: "url('/rice-bag-bg.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="container mx-auto px-6"
+          className="container mx-auto px-6 relative z-10"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Featured Products</h2>
+          <h2 className="text-7xl font-bold text-center mb-16 text-[#006241]" 
+              style={{ fontFamily: 'Playfair Display, serif' }}>
+            FEATURED PRODUCTS
+          </h2>
+
           <Swiper
-            spaceBetween={30}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 },
-            }}
-            className="px-4"
+            modules={[Navigation]}
+            navigation={true}
+            spaceBetween={50}
+            slidesPerView={3}
+            className="featured-products-slider"
           >
             {featuredProducts.map((product) => (
               <SwiperSlide key={product.id}>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white p-4 rounded-lg shadow-md"
+                  className="bg-white p-8 rounded-lg shadow-lg text-center"
                 >
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-md" />
-                  <h3 className="mt-4 text-lg font-semibold">{product.name}</h3>
-                  <p className="text-blue-600 font-bold">{product.price}</p>
+                  <div className="h-64 mb-6">
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      className="w-full h-full object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-800">
+                    {product.name}
+                  </h3>
+                  <p className="text-lg text-gray-600">
+                    {product.description}
+                  </p>
                 </motion.div>
               </SwiperSlide>
             ))}
