@@ -30,9 +30,9 @@ function HomePage() {
 
   // Ad slider images - replace these paths with your public folder image paths
   const adSlides = [
+    '/river_slide2.jpg',
     '/slide1.svg',
-    '/slide2.svg',
-    '/slide3.svg'
+    '/green_slide3.jpg'
   ];
 
 
@@ -120,56 +120,100 @@ function HomePage() {
               <img src={logo} alt="FATA Logo" className="h-12" />
             </div>
             <div className="flex space-x-12">
-              <a 
-                href="#home" 
-                onClick={() => handleNavClick('home')}
-                className="text-white text-xl relative group"
-              >
-                Home
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                  ${activePage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                </span>
-              </a>
-              <a 
-                href="#products" 
-                onClick={() => handleNavClick('products')}
-                className="text-white text-xl relative group"
-              >
-                products
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                  ${activePage === 'products' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                </span>
-              </a>
-              <a 
-                href="#recipes" 
-                onClick={() => handleNavClick('recipes')}
-                className="text-white text-xl relative group"
-              >
-                recipes
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                  ${activePage === 'recipes' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                </span>
-              </a>
-              <a 
-                href="#contact" 
-                onClick={() => handleNavClick('contact')}
-                className="text-white text-xl relative group"
-              >
-                contact us
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                  ${activePage === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                </span>
-              </a>
-              <a 
-                href="#about" 
-                onClick={() => handleNavClick('about')}
-                className="text-white text-xl relative group"
-              >
-                about us
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                  ${activePage === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                </span>
-              </a>
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'home' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <a 
+                  href="#home" 
+                  onClick={() => handleNavClick('home')}
+                  className="text-white text-xl relative"
+                >
+                  Home
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </a>
+              </div>
+
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'products' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <a 
+                  href="#products" 
+                  onClick={() => handleNavClick('products')}
+                  className="text-white text-xl relative"
+                >
+                  products
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'products' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </a>
+              </div>
+
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'recipes' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <a 
+                  href="#recipes" 
+                  onClick={() => handleNavClick('recipes')}
+                  className="text-white text-xl relative"
+                >
+                  recipes
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'recipes' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </a>
+              </div>
+
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'contact' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <a 
+                  href="#contact" 
+                  onClick={() => handleNavClick('contact')}
+                  className="text-white text-xl relative"
+                >
+                  contact us
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </a>
+              </div>
+
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'about' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <a 
+                  href="#about" 
+                  onClick={() => handleNavClick('about')}
+                  className="text-white text-xl relative"
+                >
+                  about us
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -313,15 +357,15 @@ function HomePage() {
         {/* Content Container */}
         <div className="relative z-30 h-full">
           <div className="container mx-auto px-6 pt-32">
-            {/* Title - Positioned absolutely to overlay on background */}
-            <h1 className="text-white text-8xl font-bold relative">
+            {/* Title */}
+            <h1 className="text-white text-8xl font-bold relative mb-16">
               RECIPES
             </h1>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-2 gap-20 mt-16">
+            <div className="grid grid-cols-2 gap-0">
               {/* Left Side - Recipe Names */}
-              <div className="flex flex-col space-y-4 border-r-2 border-[#006241] pr-8">
+              <div className="flex flex-col space-y-4 border-r-4 border-[#006241]">
                 {recipes.map((recipe) => (
                   <div 
                     key={recipe.id}
@@ -338,7 +382,7 @@ function HomePage() {
               </div>
 
               {/* Right Side - Recipe Details */}
-              <div className="flex flex-col">
+              <div className="flex flex-col relative min-h-[400px] pl-12">
                 <div className="mb-8">
                   <h2 className="text-white text-2xl mb-4">DESCRIPTION:</h2>
                   <p className="text-gray-400">
@@ -346,8 +390,8 @@ function HomePage() {
                   </p>
                 </div>
 
-                {/* Recipe Image */}
-                <div className="relative">
+                {/* Recipe Image - Positioned bottom right */}
+                <div className="absolute bottom-0 right-0 w-[300px]">
                   <img 
                     src={recipes.find(r => r.id === activeRecipe)?.image} 
                     alt={recipes.find(r => r.id === activeRecipe)?.name}
@@ -525,28 +569,45 @@ function HomePage() {
       
 
       {/* Footer */}
-      <footer className="bg-[#006241] text-white py-8">
+      <footer className="bg-[#006241] text-white py-6">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center">
-            {/* Left Links */}
-            <div className="space-y-2">
-              <p className="hover:text-gray-200 cursor-pointer">Learn more</p>
-              <p className="hover:text-gray-200 cursor-pointer">Terms & conditions</p>
-              <p className="hover:text-gray-200 cursor-pointer">Privacy Policy</p>
-              <p className="hover:text-gray-200 cursor-pointer">Contact Us</p>
+          <div className="flex justify-between items-start">
+            {/* Left Section */}
+            <div className="flex">
+              <span className="mr-4">Learn more</span>
+              <div className="flex">
+                <div className="border-l-2 border-white h-full mx-4"></div>
+                <div className="flex flex-col space-y-2">
+                  <a href="#terms" className="hover:underline">Terms & onditions</a>
+                  <a href="#privacy" className="hover:underline">Privacy Policy</a>
+                  <a href="#contact" className="hover:underline">Contact Us</a>
+                </div>
+              </div>
             </div>
 
-            {/* Center Logo */}
+            {/* Center Section - Logo */}
             <div className="flex flex-col items-center">
-              <img src="/fata_logo.svg" alt="FATA Logo" className="h-16 mb-2" />
+              <img 
+                src={logo} 
+                alt="FATA Logo" 
+                className="h-16 mb-2"
+              />
               <p className="text-sm">We Provide the best</p>
             </div>
 
-            {/* Right Address */}
-            <div className="text-right">
-              <p>Address</p>
-              <p>xyz batley, track Road</p>
-              <p>123 citry xyz</p>
+            {/* Right Section - Address */}
+            <div className="flex">
+              <div className="border-l-2 border-white h-full mx-4"></div>
+              <div className="flex">
+                <span className="mr-4">Address</span>
+                <div className="flex">
+                  <div className="border-l-2 border-white h-full mx-4"></div>
+                  <div className="flex flex-col">
+                    <p>xyz batley, track Road</p>
+                    <p>123 citry xyz</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
