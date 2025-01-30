@@ -419,12 +419,27 @@ function HomePage() {
           {/* Right side - Content */}
           <div className="bg-white p-16 flex flex-col justify-center relative overflow-hidden">
             <div className="relative mb-12">
-              <div className="flex items-center justify-center relative">
+              <motion.div 
+                initial={{ 
+                  x: 500,
+                  opacity: 0
+                }}
+                whileInView={{ 
+                  x: 0,
+                  opacity: 1
+                }}
+                transition={{ 
+                  duration: 1.0,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: false }}
+                className="flex items-center justify-center relative"
+              >
                 {/* Rice beans decoration left */}
                 <img 
                   src="/rice_beans.svg" 
                   alt="Rice decoration" 
-                  className=" top-1/2 -translate-y-1/2 w-14 h-14 transform -rotate-45"
+                  className="top-1/2 -translate-y-1/2 w-14 h-14 transform -rotate-45"
                 />
                 
                 <h2 className="text-[#006241] text-7xl font-bold text-center relative z-10">
@@ -435,26 +450,42 @@ function HomePage() {
                 <img 
                   src="/rice_beans.svg" 
                   alt="Rice decoration" 
-                  className=" top-1/2 -translate-y-1/2 w-14 h-14 transform rotate-45"
+                  className="top-1/2 -translate-y-1/2 w-14 h-14 transform rotate-45"
                 />
-              </div>
+              </motion.div>
             </div>
 
-            <div className="relative z-10 max-w-2xl mx-auto">
+            <motion.div 
+              initial={{ 
+                x: 500,
+                opacity: 0
+              }}
+              whileInView={{ 
+                x: 0,
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 1.0,
+                ease: "easeOut",
+                delay: 0.2
+              }}
+              viewport={{ once: false }}
+              className="relative z-10 max-w-2xl mx-auto"
+            >
               <p className="text-center text-xl leading-relaxed mb-8">
                 La Lune French Bistro was born from a love of all things Paris. Our founder and chef Ingrid Correa spent three amazing years in the City of Love, training under the industry's best. She brought home everything she learned - the flavors, the feelings, the family-style cafe - so that you can get a taste of Paris, too.
               </p>
 
               <div className="text-center">
-              <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#006241] text-white px-8 py-3 rounded-full text-xl hover:bg-[#005236] transition-colors"
-          >
-            EXPLORE MORE
-          </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-[#006241] text-white px-8 py-3 rounded-full text-xl hover:bg-[#005236] transition-colors"
+                >
+                  EXPLORE MORE
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Wheat/Rice crop decoration in bottom right */}
             <img 
@@ -474,8 +505,6 @@ function HomePage() {
           alt="Wheat decoration" 
           className="absolute -left-40 top-50 h-full w-auto object-contain z-0"
         />
-
-        {/* Rice bag decoration top right */}
         <img 
           src="/rice_bag_right.svg" 
           alt="Rice bag" 
@@ -485,7 +514,21 @@ function HomePage() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 gap-20">
             {/* Left side - Contact Form */}
-            <div>
+            <motion.div
+              initial={{ 
+                x: -500,
+                opacity: 0
+              }}
+              whileInView={{ 
+                x: 0,
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 1.0,
+                ease: "easeOut"
+              }}
+              viewport={{ once: false }}
+            >
               <form className="space-y-6">
                 <div>
                   <label className="text-xl mb-2 block">Name</label>
@@ -527,10 +570,25 @@ function HomePage() {
                   Submit
                 </button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Right side - Contact Information */}
-            <div className="pt-10">
+            <motion.div 
+              initial={{ 
+                x: 500,
+                opacity: 0
+              }}
+              whileInView={{ 
+                x: 0,
+                opacity: 1
+              }}
+              transition={{ 
+                duration: 1.0,
+                ease: "easeOut"
+              }}
+              viewport={{ once: false }}
+              className="pt-10"
+            >
               <h2 className="text-[#006241] text-7xl font-bold mb-8">
                 Contact Us
               </h2>
@@ -561,7 +619,7 @@ function HomePage() {
                   <span className="text-xl">123 Anywhere St., Any City, ST 12345</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
