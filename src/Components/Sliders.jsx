@@ -13,8 +13,8 @@ function Sliders() {
         <Swiper
           modules={[Autoplay]}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000 }}
-          className="w-full h-[600px]"
+          autoplay={{ delay: 2000 }}
+          className="w-full h-screen"
         >
            <SwiperSlide>
               <img src='./home_slider_1.svg' alt='slider_1' className="w-full h-full object-cover" />

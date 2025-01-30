@@ -1,8 +1,8 @@
 export const NAV_LINKS=[
     {title:"Home",href:"/"},
+    {title:"About us",href:"/"},
     {title:"Product",href:"/"},
     {title:"Recipe",href:"/"},
-    {title:"About us",href:"/"},
     {title:"Conact us",href:"/"},
 ]
 export const FEATURED_CARDS=[
