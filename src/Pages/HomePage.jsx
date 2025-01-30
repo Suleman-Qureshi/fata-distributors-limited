@@ -385,7 +385,7 @@ function HomePage() {
               <div className="flex flex-col relative min-h-[400px] pl-12">
                 <div className="mb-8">
                   <h2 className="text-white text-2xl mb-4">DESCRIPTION:</h2>
-                  <p className="text-gray-400">
+                  <p className="text-white">
                     {recipes.find(r => r.id === activeRecipe)?.description}
                   </p>
                 </div>
