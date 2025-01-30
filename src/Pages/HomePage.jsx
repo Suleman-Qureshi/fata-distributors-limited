@@ -110,6 +110,13 @@ function HomePage() {
     setActiveRecipe(recipeId);
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen relative">
       {/* Navigation */}
@@ -127,16 +134,18 @@ function HomePage() {
                   className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
                     ${activePage === 'home' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                 />
-                <a 
-                  href="#home" 
-                  onClick={() => handleNavClick('home')}
+                <button 
+                  onClick={() => {
+                    scrollToSection('hero-section');
+                    handleNavClick('home');
+                  }}
                   className="text-white text-xl relative"
                 >
                   Home
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
                     ${activePage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
                   </span>
-                </a>
+                </button>
               </div>
 
               <div className="relative group">
@@ -148,7 +157,11 @@ function HomePage() {
                 />
                 <a 
                   href="#products" 
-                  onClick={() => handleNavClick('products')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    handleNavClick('products');
+                  }}
                   className="text-white text-xl relative"
                 >
                   products
@@ -165,35 +178,18 @@ function HomePage() {
                   className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
                     ${activePage === 'recipes' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                 />
-                <a 
-                  href="#recipes" 
-                  onClick={() => handleNavClick('recipes')}
+                <button 
+                  onClick={() => {
+                    scrollToSection('recipes-section');
+                    handleNavClick('recipes');
+                  }}
                   className="text-white text-xl relative"
                 >
                   recipes
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
                     ${activePage === 'recipes' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
                   </span>
-                </a>
-              </div>
-
-              <div className="relative group">
-                <img 
-                  src="/rice_beans.svg" 
-                  alt="Rice decoration" 
-                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
-                    ${activePage === 'contact' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                />
-                <a 
-                  href="#contact" 
-                  onClick={() => handleNavClick('contact')}
-                  className="text-white text-xl relative"
-                >
-                  contact us
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
-                    ${activePage === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
-                  </span>
-                </a>
+                </button>
               </div>
 
               <div className="relative group">
@@ -203,16 +199,39 @@ function HomePage() {
                   className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
                     ${activePage === 'about' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                 />
-                <a 
-                  href="#about" 
-                  onClick={() => handleNavClick('about')}
+                <button 
+                  onClick={() => {
+                    scrollToSection('about-section');
+                    handleNavClick('about');
+                  }}
                   className="text-white text-xl relative"
                 >
                   about us
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
                     ${activePage === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
                   </span>
-                </a>
+                </button>
+              </div>
+
+              <div className="relative group">
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className={`absolute -top-4 -left-4 w-6 h-6 transform rotate-45 transition-opacity duration-300
+                    ${activePage === 'contact' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                />
+                <button 
+                  onClick={() => {
+                    scrollToSection('contact-section');
+                    handleNavClick('contact');
+                  }}
+                  className="text-white text-xl relative"
+                >
+                  contact us
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-white transform transition-transform duration-300 
+                    ${activePage === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -220,7 +239,7 @@ function HomePage() {
       </nav>
 
       {/* Hero Section with Slider */}
-      <section className="relative h-screen">
+      <section id="hero-section" className="relative h-screen">
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000 }}
@@ -339,7 +358,7 @@ function HomePage() {
       </section>
 
       {/* Recipes Section */}
-      <section className="relative min-h-screen bg-black">
+      <section id="recipes-section" className="relative min-h-screen bg-black">
         {/* Background Container with Parallax */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
@@ -405,7 +424,7 @@ function HomePage() {
       </section>
 
       {/* About Us Section */}
-      <section className="relative">
+      <section id="about-section" className="relative">
         <div className="grid grid-cols-2 gap-0">
           {/* Left side - Image */}
           <div className="h-[600px]">
@@ -498,7 +517,7 @@ function HomePage() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-20 relative bg-[#f5f5f0] overflow-hidden">
+      <section id="contact-section" className="py-20 relative bg-[#f5f5f0] overflow-hidden">
         {/* Decorative elements */}
         <img 
           src="/rice_crop.svg" 
