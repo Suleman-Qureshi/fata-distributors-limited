@@ -29,24 +29,36 @@ body{
       }
 
       .featured-products-slider {
-        padding: 20px 40px !important;
+        padding: 20px 0;
       }
       
+      .featured-products-slider .swiper-slide {
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Hide default Swiper navigation */
       .featured-products-slider .swiper-button-next,
       .featured-products-slider .swiper-button-prev {
-        color: #006241;
-        background: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: none;
       }
-      
-      .featured-products-slider .swiper-button-next:after,
-      .featured-products-slider .swiper-button-prev:after {
-        font-size: 20px;
+
+      /* Remove disabled state styles */
+      .custom-prev,
+      .custom-next {
+        opacity: 1 !important;
+        cursor: pointer !important;
       }
-      
-      .featured-products-slider .swiper-button-disabled {
-        opacity: 0.5;
-      }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-link {
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}

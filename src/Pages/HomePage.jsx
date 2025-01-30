@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import logo from '/fata_logo.svg'; // Make sure to add your FATA logo
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 function HomePage() {
   const [activePage, setActivePage] = useState('home');
+  const [activeRecipe, setActiveRecipe] = useState('recipe1');
+
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '80%']);
+
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current.swiper;
+      if (swiper) {
+        swiper.params.navigation.prevEl = '.custom-prev';
+        swiper.params.navigation.nextEl = '.custom-next';
+        swiper.navigation.init();
+        swiper.navigation.update();
+      }
+    }
+  }, []);
 
   // Ad slider images - replace these paths with your public folder image paths
   const adSlides = [
@@ -16,30 +35,79 @@ function HomePage() {
     '/slide3.svg'
   ];
 
-  // Updated featured products data
+
   const featuredProducts = [
     { 
       id: 1, 
-      name: 'Name', 
-      description: 'Description',
+      name: 'Premium Rice', 
+      description: 'High-quality basmati rice',
       image: '/featured-product-1.svg'
     },
     { 
       id: 2, 
-      name: 'Name', 
-      description: 'Description',
+      name: 'Spice Mix', 
+      description: 'Traditional spice blend',
       image: '/featured-product-2.svg'
     },
     { 
       id: 3, 
-      name: 'Name', 
-      description: 'Description',
+      name: 'Cooking Oil', 
+      description: 'Pure vegetable oil',
       image: '/featured-product-3.svg'
+    },
+    { 
+      id: 4, 
+      name: 'Lentils', 
+      description: 'Organic red lentils',
+      image: '/display_product.png'
+    },
+    { 
+      id: 5, 
+      name: 'Tea Leaves', 
+      description: 'Premium black tea',
+      image: '/display_product.png'
+    }
+  ];
+
+  const recipes = [
+    {
+      id: 'recipe1',
+      name: 'Chicken Biryani',
+      description: 'A flavorful combination of rice, tender chicken, and aromatic spices layered and cooked to perfection.',
+      image: '/Picture28.svg'
+    },
+    {
+      id: 'recipe2',
+      name: 'Butter Chicken',
+      description: 'Tender chicken pieces in a rich, creamy tomato-based curry with butter and aromatic spices.',
+      image: '/Picture28.svg'
+    },
+    {
+      id: 'recipe3',
+      name: 'Palak Paneer',
+      description: 'Fresh spinach pureed and cooked with Indian cottage cheese and spices.',
+      image: '/Picture28.svg'
+    },
+    {
+      id: 'recipe4',
+      name: 'Dal Makhani',
+      description: 'Creamy black lentils slow-cooked with butter and spices.',
+      image: '/Picture28.svg'
+    },
+    {
+      id: 'recipe5',
+      name: 'Naan Bread',
+      description: 'Traditional Indian bread baked in a tandoor, perfect for scooping up curries.',
+      image: '/Picture28.svg'
     }
   ];
 
   const handleNavClick = (page) => {
     setActivePage(page);
+  };
+
+  const handleRecipeClick = (recipeId) => {
+    setActiveRecipe(recipeId);
   };
 
   return (
@@ -144,156 +212,342 @@ function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-20 relative">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: "url('/rice-bag-bg.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        ></div>
+      <section className="py-20 relative overflow-hidden bg-white">
+        {/* Rice bag decoration */}
+        <img 
+          src="/rice_bag.svg" 
+          alt="Rice bag" 
+          className="absolute -left-20 top-0 h-60 z-0"
+        />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container mx-auto px-6 relative z-10"
-        >
-          <h2 className="text-7xl font-bold text-center mb-16 text-[#006241]" 
-              style={{ fontFamily: 'Playfair Display, serif' }}>
-            FEATURED PRODUCTS
-          </h2>
-
-          <Swiper
-            modules={[Navigation]}
-            navigation={true}
-            spaceBetween={50}
-            slidesPerView={3}
-            className="featured-products-slider"
+        <div className="container mx-auto px-6 relative z-20">
+          {/* Title with simple animation */}
+          <motion.h2 
+            initial={{ 
+              x: -500,
+              opacity: 0
+            }}
+            whileInView={{ 
+              x: 0,
+              opacity: 1
+            }}
+            transition={{ 
+              duration: 1.0,
+              ease: "easeOut"
+            }}
+            className="text-7xl font-bold text-center mb-16 text-[#006241]" 
+            style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            {featuredProducts.map((product) => (
-              <SwiperSlide key={product.id}>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white p-8 rounded-lg shadow-lg text-center"
-                >
-                  <div className="h-64 mb-6">
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-full object-contain" 
-                    />
+            FEATURED PRODUCTS
+          </motion.h2>
+
+          {/* Products Slider */}
+          <div className="relative px-12">
+            <Swiper
+              ref={swiperRef}
+              modules={[Navigation]}
+              navigation={{
+                prevEl: '.custom-prev',
+                nextEl: '.custom-next',
+              }}
+              spaceBetween={30}
+              slidesPerView={3}
+              loop={true}
+              className="featured-products-slider"
+            >
+              {featuredProducts.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-white p-6 rounded-lg shadow-lg text-center max-w-[280px] mx-auto"
+                  >
+                    <div className="h-40 w-40 mx-auto mb-4">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-contain" 
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {product.description}
+                    </p>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Custom Navigation Buttons */}
+            <div className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors border border-[#006241] cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#006241]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </div>
+            <div className="custom-next absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors border border-[#006241] cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#006241]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recipes Section */}
+      <section className="relative min-h-screen bg-black">
+        {/* Background Container with Parallax */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div 
+            className="absolute inset-0 z-0"
+            style={{ y }}
+          >
+            <img 
+              src="/slide3.svg" 
+              alt="Background" 
+              className="w-full h-[120%] object-cover object-center transform -translate-y-1/4 inset-0 opacity-50"
+            />
+          </motion.div>
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-30 h-full">
+          <div className="container mx-auto px-6 pt-32">
+            {/* Title - Positioned absolutely to overlay on background */}
+            <h1 className="text-white text-8xl font-bold relative">
+              RECIPES
+            </h1>
+
+            {/* Content Grid */}
+            <div className="grid grid-cols-2 gap-20 mt-16">
+              {/* Left Side - Recipe Names */}
+              <div className="flex flex-col space-y-4 border-r-2 border-[#006241] pr-8">
+                {recipes.map((recipe) => (
+                  <div 
+                    key={recipe.id}
+                    className={`p-4 cursor-pointer ${
+                      activeRecipe === recipe.id 
+                        ? 'bg-[#006241]' 
+                        : 'hover:bg-[#006241] transition-colors'
+                    }`}
+                    onClick={() => handleRecipeClick(recipe.id)}
+                  >
+                    <h3 className="text-white text-xl">{recipe.name}</h3>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2 text-gray-800">
-                    {product.name}
-                  </h3>
-                  <p className="text-lg text-gray-600">
-                    {product.description}
+                ))}
+              </div>
+
+              {/* Right Side - Recipe Details */}
+              <div className="flex flex-col">
+                <div className="mb-8">
+                  <h2 className="text-white text-2xl mb-4">DESCRIPTION:</h2>
+                  <p className="text-gray-400">
+                    {recipes.find(r => r.id === activeRecipe)?.description}
                   </p>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </motion.div>
+                </div>
+
+                {/* Recipe Image */}
+                <div className="relative">
+                  <img 
+                    src={recipes.find(r => r.id === activeRecipe)?.image} 
+                    alt={recipes.find(r => r.id === activeRecipe)?.name}
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* About Us Section */}
-      <section className="py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">About Us</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img src="/about-image.jpg" alt="About Us" className="rounded-lg shadow-lg" />
-            </div>
-            <div>
-              <p className="text-gray-600 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
+      <section className="relative">
+        <div className="grid grid-cols-2 gap-0">
+          {/* Left side - Image */}
+          <div className="h-[600px]">
+            <img 
+              src="/about_img.svg" 
+              alt="Farmers in field" 
+              className="w-full h-full object-cover"
+            />
           </div>
-        </motion.div>
+          
+          {/* Right side - Content */}
+          <div className="bg-white p-16 flex flex-col justify-center relative overflow-hidden">
+            <div className="relative mb-12">
+              <div className="flex items-center justify-center relative">
+                {/* Rice beans decoration left */}
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className=" top-1/2 -translate-y-1/2 w-14 h-14 transform -rotate-45"
+                />
+                
+                <h2 className="text-[#006241] text-7xl font-bold text-center relative z-10">
+                  ABOUT US
+                </h2>
+                
+                {/* Rice beans decoration right */}
+                <img 
+                  src="/rice_beans.svg" 
+                  alt="Rice decoration" 
+                  className=" top-1/2 -translate-y-1/2 w-14 h-14 transform rotate-45"
+                />
+              </div>
+            </div>
+
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <p className="text-center text-xl leading-relaxed mb-8">
+                La Lune French Bistro was born from a love of all things Paris. Our founder and chef Ingrid Correa spent three amazing years in the City of Love, training under the industry's best. She brought home everything she learned - the flavors, the feelings, the family-style cafe - so that you can get a taste of Paris, too.
+              </p>
+
+              <div className="text-center">
+              <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#006241] text-white px-8 py-3 rounded-full text-xl hover:bg-[#005236] transition-colors"
+          >
+            EXPLORE MORE
+          </motion.button>
+              </div>
+            </div>
+
+            {/* Wheat/Rice crop decoration in bottom right */}
+            <img 
+              src="/sitta.svg" 
+              alt="Wheat decoration" 
+              className="absolute -right-40 top-50 h-full w-auto object-contain z-0"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-20 bg-gray-50">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
-          <div className="max-w-2xl mx-auto">
-            <form className="space-y-6">
-              <div>
-                <input 
-                  type="text" 
-                  placeholder="Your Name" 
-                  className="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400" 
-                />
+      <section className="py-20 relative bg-[#f5f5f0] overflow-hidden">
+        {/* Decorative elements */}
+        <img 
+          src="/rice_crop.svg" 
+          alt="Wheat decoration" 
+          className="absolute -left-40 top-50 h-full w-auto object-contain z-0"
+        />
+
+        {/* Rice bag decoration top right */}
+        <img 
+          src="/rice_bag_right.svg" 
+          alt="Rice bag" 
+          className="absolute top-0 -right-20 h-60 z-0"
+        />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-2 gap-20">
+            {/* Left side - Contact Form */}
+            <div>
+              <form className="space-y-6">
+                <div>
+                  <label className="text-xl mb-2 block">Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]" 
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xl mb-2 block">Email</label>
+                    <input 
+                      type="email" 
+                      className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]" 
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xl mb-2 block">Phone Number</label>
+                    <input 
+                      type="tel" 
+                      className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]" 
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-xl mb-2 block">Message</label>
+                  <textarea 
+                    rows="6" 
+                    className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="bg-[#006241] text-white px-12 py-3 rounded-md text-xl hover:bg-[#005236] transition-colors"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+
+            {/* Right side - Contact Information */}
+            <div className="pt-10">
+              <h2 className="text-[#006241] text-7xl font-bold mb-8">
+                Contact Us
+              </h2>
+              
+              <p className="text-xl mb-12 max-w-md">
+                For questions, technical assistance, or collaboration opportunities via the contact information provided.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-black rounded-full p-3">
+                    <FaPhone className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="text-xl">+123-456-7890</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-black rounded-full p-3">
+                    <FaEnvelope className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="text-xl">hello@reallygreatsite.com</span>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-black rounded-full p-3">
+                    <FaMapMarkerAlt className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="text-xl">123 Anywhere St., Any City, ST 12345</span>
+                </div>
               </div>
-              <div>
-                <input 
-                  type="email" 
-                  placeholder="Your Email" 
-                  className="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400" 
-                />
-              </div>
-              <div>
-                <textarea 
-                  placeholder="Your Message" 
-                  rows="4" 
-                  className="w-full p-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400"
-                ></textarea>
-              </div>
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors w-full"
-              >
-                Send Message
-              </motion.button>
-            </form>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
+      
+
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
+      <footer className="bg-[#006241] text-white py-8">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div>
-              <h3 className="text-xl font-bold mb-4">About Us</h3>
-              <p className="text-gray-400">Your company description goes here.</p>
+          <div className="flex justify-between items-center">
+            {/* Left Links */}
+            <div className="space-y-2">
+              <p className="hover:text-gray-200 cursor-pointer">Learn more</p>
+              <p className="hover:text-gray-200 cursor-pointer">Terms & conditions</p>
+              <p className="hover:text-gray-200 cursor-pointer">Privacy Policy</p>
+              <p className="hover:text-gray-200 cursor-pointer">Contact Us</p>
             </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Products</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-              </ul>
+
+            {/* Center Logo */}
+            <div className="flex flex-col items-center">
+              <img src="/fata_logo.svg" alt="FATA Logo" className="h-16 mb-2" />
+              <p className="text-sm">We Provide the best</p>
             </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Email: info@example.com</li>
-                <li>Phone: (123) 456-7890</li>
-                <li>Address: 123 Street Name, City</li>
-              </ul>
+
+            {/* Right Address */}
+            <div className="text-right">
+              <p>Address</p>
+              <p>xyz batley, track Road</p>
+              <p>123 citry xyz</p>
             </div>
-          </div>
-          <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
           </div>
         </div>
       </footer>
