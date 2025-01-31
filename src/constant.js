@@ -3,7 +3,6 @@ export const NAV_LINKS=[
     {title:"About us",href:"/"},
     {title:"Product",href:"/"},
     {title:"Recipe",href:"/"},
-    {title:"Conact us",href:"/"},
 ]
 export const FEATURED_CARDS=[
     {img:"https://suleman-qureshi.github.io/sample-ste-6/recources/specials-1.png",description:"Description",name:"Item 1",id:1, },
