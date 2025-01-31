@@ -8,6 +8,7 @@ import AboutSection from '../Components/Sections/AboutSection';
 import ContactSection from '../Components/Sections/ContactSection';
 import Footer from '../Components/Footer';
 import HeroSection from '../Components/Sections/HeroSection';
+import Reactcarousel from '../Components/React-arousel/Reactcarousel';
 
 function HomePage() {
   return (
@@ -18,6 +19,7 @@ function HomePage() {
       <RecipeSection/>
       <AboutSection/>
       <ContactSection/>
+      {/* <Reactcarousel/> */}
       <Footer/>
     </div>
   );
