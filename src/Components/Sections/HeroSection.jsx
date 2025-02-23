@@ -41,11 +41,11 @@ function HeroSection() {
     </Swiper>
 
     {/* Overlay Text - This will stay fixed while images slide */}
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
-      <h1 className="text-7xl font-black mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+    <div className="absolute text-7xl text-5xl inset-0 flex flex-col font-black max-sm:font-bold items-center justify-center text-white z-10">
+      <h1 className=" mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
         WE PROVIDE
       </h1>
-      <h1 className="text-7xl font-black mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
+      <h1 className="mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
         THE BEST
       </h1>
       <motion.button

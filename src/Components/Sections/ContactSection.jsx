@@ -3,21 +3,17 @@ import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 function ContactSection() {
   return (
-    <section id="contact-section" className="py-20 relative bg-[#f5f5f0] overflow-hidden">
+    <section id="contact-section" className="py-20 relative z-0 overflow-hidden">
         {/* Decorative elements */}
         <img 
           src="/rice_crop.svg" 
           alt="Wheat decoration" 
           className="absolute -left-40 top-50 h-full w-auto object-contain z-0"
         />
-        <img 
-          src="/rice_bag_right.svg" 
-          alt="Rice bag" 
-          className="absolute top-0 -right-20 h-60 z-0"
-        />
+       
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-2 gap-20">
+          <div className="flex max-md:flex-col-reverse gap-20">
             {/* Left side - Contact Form */}
             <motion.div
               initial={{ 
@@ -32,7 +28,7 @@ function ContactSection() {
                 duration: 1.0,
                 ease: "easeOut"
               }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
               <form className="space-y-6">
                 <div>
@@ -64,7 +60,7 @@ function ContactSection() {
                   <label className="text-xl mb-2 block">Message</label>
                   <textarea 
                     rows="6" 
-                    className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]"
+                    className="w-full p-3 rounded-md border bg-transparent border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]"
                   ></textarea>
                 </div>
 
@@ -91,7 +87,7 @@ function ContactSection() {
                 duration: 1.0,
                 ease: "easeOut"
               }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               className="pt-10"
             >
               <h2 className="text-[#006241] text-7xl font-bold mb-8">

@@ -8,18 +8,16 @@ import AboutSection from '../Components/Sections/AboutSection';
 import ContactSection from '../Components/Sections/ContactSection';
 import Footer from '../Components/Footer';
 import HeroSection from '../Components/Sections/HeroSection';
-import Reactcarousel from '../Components/React-arousel/Reactcarousel';
 
 function HomePage() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen w-screen overflow-hidden relative">
       <NavBar/>
       <HeroSection/>
       <ProductSection/>
       <RecipeSection/>
       <AboutSection/>
       <ContactSection/>
-      {/* <Reactcarousel/> */}
       <Footer/>
     </div>
   );

@@ -2,10 +2,10 @@ import React from 'react'
 import { motion} from 'framer-motion';
 function AboutSection() {
   return (
-    <section id="about-section" className="relative">
-        <div className="grid grid-cols-2 gap-0">
+    <section id="about-section" className="relative z-10 w-screen min-h-screen">
+        <div className="flex max-md:flex-col gap-0 w-full">
           {/* Left side - Image */}
-          <div className="h-[600px]">
+          <div className="w-full max-md:h-96">
             <img 
               src="/about_img.svg" 
               alt="Farmers in field" 
@@ -14,7 +14,7 @@ function AboutSection() {
           </div>
           
           {/* Right side - Content */}
-          <div className="bg-white p-16 flex flex-col justify-center relative overflow-hidden">
+          <div className="bg-white p-4 flex flex-col justify-center items-center relative w-full">
             <div className="relative mb-12">
               <motion.div 
                 initial={{ 
@@ -29,7 +29,7 @@ function AboutSection() {
                   duration: 1.0,
                   ease: "easeOut"
                 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 className="flex items-center justify-center relative"
               >
                 {/* Rice beans decoration left */}
@@ -66,10 +66,10 @@ function AboutSection() {
                 ease: "easeOut",
                 delay: 0.2
               }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               className="relative z-10 max-w-2xl mx-auto"
             >
-              <p className="text-center text-xl leading-relaxed mb-8">
+              <p className=" text-center text-lg mb-8">
                 La Lune French Bistro was born from a love of all things Paris. Our founder and chef Ingrid Correa spent three amazing years in the City of Love, training under the industry's best. She brought home everything she learned - the flavors, the feelings, the family-style cafe - so that you can get a taste of Paris, too.
               </p>
 
@@ -86,10 +86,10 @@ function AboutSection() {
 
             {/* Wheat/Rice crop decoration in bottom right */}
             <img 
-              src="/sitta.svg" 
-              alt="Wheat decoration" 
-              className="absolute -right-40 top-50 h-full w-auto object-contain z-0"
-            />
+          src="/rice_bag_right.svg" 
+          alt="Rice bag" 
+          className="absolute -bottom-32 -right-20 h-60 z-0"
+        />
           </div>
         </div>
       </section>
