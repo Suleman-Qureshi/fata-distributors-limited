@@ -7,8 +7,8 @@ function AboutSection() {
       className="relative w-screen min-h-screen max-md:pb-0 flex max-md:flex-col"
     >
       {/* Left side - Image */}
-      <div className="w-full max-md:h-96 bg-[url('./about_img.svg')] bg-center bg-cover relative before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-50">
- 
+      <div className="w-full max-md:h-96 relative before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-50">
+ <img src="./about_img.svg" alt="" className="w-full h-full" />
       </div>
       <motion.div
       initial={{x:200}}
