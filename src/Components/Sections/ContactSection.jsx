@@ -16,21 +16,12 @@ function ContactSection() {
           <div className="flex max-md:flex-col-reverse gap-20">
             {/* Left side - Contact Form */}
             <motion.div
-              initial={{ 
-                x: -500,
-                opacity: 0
-              }}
-              whileInView={{ 
-                x: 0,
-                opacity: 1
-              }}
-              transition={{ 
-                duration: 1.0,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
+             initial={{x:-200,opacity:0}}
+             whileInView={{x:0,opacity:1}}
+             transition={{type:"spring"}}
+             viewport={{once:true,amount:0.2}}
             >
-              <form className="space-y-6">
+              <form className="flex flex-col gap-4">
                 <div>
                   <label className="text-xl mb-2 block">Name</label>
                   <input 
@@ -39,7 +30,7 @@ function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex max-md:flex-col gap-4">
                   <div>
                     <label className="text-xl mb-2 block">Email</label>
                     <input 
@@ -74,53 +65,40 @@ function ContactSection() {
             </motion.div>
 
             {/* Right side - Contact Information */}
-            <motion.div 
-              initial={{ 
-                x: 500,
-                opacity: 0
-              }}
-              whileInView={{ 
-                x: 0,
-                opacity: 1
-              }}
-              transition={{ 
-                duration: 1.0,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-              className="pt-10"
+            <div 
+              className="p-2 flex flex-col gap-4"
             >
-              <h2 className="text-[#006241] text-7xl font-bold mb-8">
+              <motion.h2 initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="text-[#006241] text-7xl max-sm:text-5xl font-bold">
                 Contact Us
-              </h2>
+              </motion.h2>
               
-              <p className="text-xl mb-12 max-w-md">
+              <motion.p initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="text-xl  max-w-md">
                 For questions, technical assistance, or collaboration opportunities via the contact information provided.
-              </p>
+              </motion.p>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-4">
+                <motion.div initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="flex items-center gap-2">
                   <div className="bg-black rounded-full p-3">
                     <FaPhone className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-xl">+123-456-7890</span>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4">
+                <motion.div initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="flex items-center gap-2">
                   <div className="bg-black rounded-full p-3">
                     <FaEnvelope className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-xl">hello@reallygreatsite.com</span>
-                </div>
+                  <span className="text-xl">example@xyz.com</span>
+                </motion.div>
 
-                <div className="flex items-center gap-4">
+                <motion.div initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="flex items-center gap-2 max-sm:gap-2">
                   <div className="bg-black rounded-full p-3">
                     <FaMapMarkerAlt className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-xl">123 Anywhere St., Any City, ST 12345</span>
-                </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

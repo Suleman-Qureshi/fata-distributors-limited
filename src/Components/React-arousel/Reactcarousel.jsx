@@ -38,7 +38,7 @@ const FEATURED_CARDS=[
      <Slider {...settings1} className='w-full flex justify-center items-center px-24 max-xl:px-0'>
       {FEATURED_CARDS.map((cardItem,index)=>
       <div className='w-52 max-2xl:w-60 max-xl:w-72 px-12 ' key={cardItem.id}>
-       <div className='relative w-full p-2 pb-0 h-full bg-slate-500 bg-opacity-30 text-black rounded-xl flex flex-col gap-4 items-center justify-end  shadow-lg shadow-[#006a4d] overflow-hidden'>
+       <div className='relative w-full p-2 pb-0 h-full bg-slate-500 bg-opacity-30 text-black rounded-xl flex flex-col gap-4 items-center justify-end   shadow-[#006a4d] overflow-hidden'>
         <div className='overflow-hidden w-full h-2/3 flex justify-center items-center'>
         <img src={cardItem.img} alt="" className='h-full' />
         </div>
@@ -52,7 +52,7 @@ const FEATURED_CARDS=[
      <Slider {...settings2} className='w-screen h-full flex justify-center items-center px-24 max-md:px-12 max-sm:px-0 '>
       {FEATURED_CARDS.map((cardItem,index)=>
       <div className='w-52 h-96 px-12 ' key={cardItem.id}>
-       <div className='relative w-full p-2 pb-0 h-full bg-slate-500 bg-opacity-30 text-black rounded-xl flex flex-col gap-4 items-center justify-end  shadow-lg shadow-[#006a4d] overflow-hidden'>
+       <div className='relative w-full p-2 pb-0 h-full bg-slate-500 bg-opacity-30 text-black rounded-xl flex flex-col gap-4 items-center justify-end   shadow-[#006a4d] overflow-hidden'>
         <div className='overflow-hidden w-full h-2/3 flex justify-center items-center'>
         <img src={cardItem.img} alt="" className='h-full' />
         </div>

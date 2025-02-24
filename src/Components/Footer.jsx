@@ -38,7 +38,7 @@ function Footer() {
     
                 {/* Right Section - Address */}
                 <div className="flex w-full justify-center">
-                      <div className="border-l-2 border-white h-full ml-9"></div>
+                      <div className="border-l-2 border-white h-full ml-9 max-md:ml-[20px]"></div>
                   <div className="flex">
                     <span className="mr-4">Address</span>
                     <div className="flex">

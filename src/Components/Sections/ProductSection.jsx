@@ -27,22 +27,13 @@ function ProductSection() {
           className="absolute -left-20 top-0 h-60 z-0"
         />
 
-        <div className="container mx-auto px-6 relative z-20">
+        <div className="container mx-auto relative z-20">
           {/* Title with simple animation */}
           <motion.h2 
-            initial={{ 
-              x: -500,
-              opacity: 0
-            }}
-            whileInView={{ 
-              x: 0,
-              opacity: 1
-            }}
-            transition={{ 
-              duration: 1.0,
-              ease: "easeOut"
-            }}
-            viewport={{once:true}}
+              initial={{y:20}}
+              whileInView={{y:0}}
+              transition={{type:'spring'}}
+              viewport={{once:true, amount:0.5}}
             className="text-7xl max-sm:text-5xl font-bold text-center mb-16 text-[#006241]" 
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
