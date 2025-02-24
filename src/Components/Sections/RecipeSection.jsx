@@ -38,15 +38,15 @@ function RecipeSection() {
         }
       ];
   return (
-<section id="recipes-section" className="relative min-h-screen bg-[url('/slide3.svg')] bg-no-repeat bg-center bg-cover bg-fixed max-md:text-center overflow-hidden">
-        <div className="relative z-30 h-full bg-black bg-opacity-30">
-          <div className="container mx-auto flex flex-col justify-center  px-20 max-md:pt-4 ">
-            <h1 className="text-white text-8xl max-md:text-6xl font-bold relative mb-16">
+<section id="recipes-section" className="relative w-screen bg-[url('/slide3.svg')] bg-no-repeat bg-center bg-cover bg-fixed max-md:text-center overflow-hidden">
+        <div className="absolute left-0 w-screen h-full bg-black bg-opacity-65 top-0"> </div>
+          <div className="container mx-auto flex flex-col justify-center gap-8  px-20 max-md:px-10 max-sm:px-4 max-md:pt-4 max-md:pb-4">
+            <h1 className="text-white text-8xl max-md:text-6xl font-bold relative max-md:text-center max-md:w-full">
               RECIPES
             </h1>
-            <div className="flex max-md:flex-col max-md:items-center gap-0">
+            <div className="flex max-md:flex-col max-md:items-center gap-8 z-10">
               {/* Left Side - Recipe Names */}
-              <div className="flex flex-col space-y-4 border-r-4 border-[#006241] w-full md:w-3/5 h-[400px] overflow-auto">
+              <div className="flex flex-col gap-2 border-r-4 border-[#006241] w-full md:w-3/5 overflow-auto">
                 {recipes.map((recipe) => (
                   <div 
                     key={recipe.id}
@@ -63,7 +63,7 @@ function RecipeSection() {
               </div>
 
               {/* Right Side - Recipe Details */}
-              <div className="flex flex-col gap-4 items-center relative min-h-[400px] pl-12 w-full">
+              <div className="flex flex-col gap-4 items-center relative min-h-[400px] pl-12 max-md:pl-0 w-full">
                 <div className="mb-8">
                   <h2 className="text-white text-2xl mb-4">DESCRIPTION:</h2>
                   <p className="text-white">
@@ -82,7 +82,7 @@ function RecipeSection() {
               </div>
             </div>
           </div>
-        </div>
+       
       </section>
   )
 }

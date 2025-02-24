@@ -5,7 +5,7 @@ function ReactSlicknextButton({
 }) {
   return (
     <button 
-    className={` p-4 shadow-xl rounded-full bg-white text-black hover:text-black text-xl opacity-50 hover:opacity-100 duration-150 -mr-24 max-lg:-mr-16 ${className}`}
+    className={` p-4 shadow-xl rounded-full bg-white text-black hover:text-black text-xl opacity-50 hover:opacity-100 duration-150 -mr-24 max-lg:-mr-16 absolute max-lg:-mt-44 max-sm:-mt-10 ${className}`}
     onClick={onClick}
     style={{position:"absolute",right:"5rem"}}
     >

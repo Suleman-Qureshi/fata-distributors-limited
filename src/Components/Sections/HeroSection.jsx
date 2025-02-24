@@ -41,7 +41,7 @@ function HeroSection() {
     </Swiper>
 
     {/* Overlay Text - This will stay fixed while images slide */}
-    <div className="absolute text-7xl text-5xl inset-0 flex flex-col font-black max-sm:font-bold items-center justify-center text-white z-10">
+    <div className="absolute text-7xl max-md:text-6xl max-sm:text-5xl inset-0 flex flex-col font-black max-sm:font-bold items-center justify-center text-white z-10">
       <h1 className=" mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
         WE PROVIDE
       </h1>

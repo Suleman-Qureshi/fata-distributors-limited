@@ -19,7 +19,7 @@ function ProductSection() {
       }, []);
 
   return (
-    <section className="py-20 relative overflow-hidden w-screen min-h-screen bg-white">
+    <section className="p-20 max-md:p-10 max-sm:p-2 relative overflow-hidden w-screen min-h-screen bg-white">
         {/* Rice bag decoration */}
         <img 
           src="/rice_bag.svg" 

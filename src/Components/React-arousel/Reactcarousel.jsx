@@ -34,7 +34,7 @@ const FEATURED_CARDS=[
       };
   return (
     <>
-    <div className='max-lg:hidden block'>
+    <div className='max-lg:hidden block relative'>
      <Slider {...settings1} className='w-full flex justify-center items-center px-24 max-xl:px-0'>
       {FEATURED_CARDS.map((cardItem,index)=>
       <div className='w-52 max-2xl:w-60 max-xl:w-72 px-12 ' key={cardItem.id}>
@@ -48,7 +48,7 @@ const FEATURED_CARDS=[
       </div>)}
   </Slider>
         </div>
-  <div className='hidden max-lg:flex w-full justify-center items-center h-[70vh]'>
+  <div className='hidden max-lg:flex w-full justify-center items-center h-[70vh] relative'>
      <Slider {...settings2} className='w-screen h-full flex justify-center items-center px-24 max-md:px-12 max-sm:px-0 '>
       {FEATURED_CARDS.map((cardItem,index)=>
       <div className='w-52 h-96 px-12 ' key={cardItem.id}>

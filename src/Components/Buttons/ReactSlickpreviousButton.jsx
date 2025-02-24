@@ -5,7 +5,7 @@ function ReactSlickpreviousButton({
 }) {
   return (
     <button 
-    className={`z-40 p-4 shadow-xl rounded-full bg-white text-black hover:text-black text-xl opacity-50 hover:opacity-100 duration-150 -ml-24 max-lg:-ml-16 ${className}`}
+    className={`z-40 p-4 shadow-xl rounded-full bg-white text-black hover:text-black text-xl opacity-50 hover:opacity-100 duration-150 -ml-24 max-lg:-ml-16 max-lg:-mt-44 max-sm:-mt-10 ${className}`}
     style={{position:"absolute",left:"5rem"}}
     onClick={onClick}
     >
