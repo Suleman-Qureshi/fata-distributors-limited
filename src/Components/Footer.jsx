@@ -5,12 +5,14 @@ function Footer() {
      <footer className="bg-[#006241] text-white py-6 max-lg:py-2">
             <div className="container mx-auto px-6 max-sm:px-2 max-lg: space-y-5">
             <div className="flex flex-col items-center lg:hidden">
+              <div className='w-full flex flex-col items-center pr-5'>
                   <img 
                     src='./fata_logo.svg' 
                     alt="FATA Logo" 
                     className="h-16 mb-2"
-                  />
+                    />
                   <p className="text-sm">We Provide the best</p>
+                    </div>
                 </div>
               <div className="flex justify-between items-start max-lg:flex-col max-lg:items-center max-lg:gap-4">
                 {/* Left Section */}
