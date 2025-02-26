@@ -23,7 +23,6 @@ function MyCarousel() {
       prevIndex === 0 ? cardData.length - 1 : prevIndex - 1
     );
   };
-
   return (
     <div className="max-w-[100vw] relative">
       {/* Navigation Buttons */}
@@ -45,7 +44,7 @@ function MyCarousel() {
 
       {/* Carousel Container */}
       <div
-        className="flex transition-transform duration-500 ease-in-out mb-10 pb-20"
+        className="flex transition-transform duration-500 ease-in-out pb-10"
         style={{
           transform: `translateX(calc(-${activeIndex} * 70vw + 11vw)) `,
         }}
@@ -53,23 +52,24 @@ function MyCarousel() {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className={`flex-shrink-0 transition-all overflow-hidden  w-[50vw] h-[50vw] md:h-[30vw]  flex items-center justify-center rounded-3xl bg-slate-400 bg-opacity-40 text-black ${activeIndex === index
+            className={`flex-shrink-0 transition-all overflow-hidden  w-[50vw] h-[50vw] md:h-[30vw] max-sm:h-[60vh]  flex items-center justify-center rounded-3xl bg-slate-400 bg-opacity-40 text-black ${activeIndex === index
                 ? "scale-105 shadow-xl shadow-black"
                 : "scale-90 opacity-75"
             }  mx-[10vw] text-2xl font-bold`}
           >
-            <div className="flex w-full h-full gap-4 p-6">
-                <div className="w-full h-full flex flex-col ">
-            <div className="h-full">{card.name}</div>
-            <div className="text-base font-normal h-full">{card.description}</div>
-            <div className="h-full content-end">
+            <div className="flex w-full max-md:flex-col-reverse max-md:justify-between h-full max-sm:h-auto gap-4 max-sm:gap-2 p-6 max-md:p-2">
+                <div className="w-full h-full flex flex-col gap-1  max-md:items-center">
+            <div className="h-full max-sm:text-base max-sm:h-auto max-sm:content-end">{card.name}</div>
+            <div className="text-sm font-normal h-full max-sm:h-auto max-lg:block hidden">{(card.description.length>20?card.description.slice(0, 20)+"...":card.description)}</div>
+            <div className="text-base font-normal h-full block max-lg:hidden">{card.description}</div>
+            <div className="h-full content-end max-lg:content-start max-lg:h-auto">
                
-                <button className="w-44 h-12 bg-[#006241] text-center rounded-full text-white text-base font-medium">View More</button>
+                <button className="w-44 h-12 max-xl:h-8 max-xl:w-40 max-lg:text-base font-medium bg-[#006241] text-center rounded-full text-white max-sm:text-xs  max-sm:font-light cursor-pointer">View More</button>
             </div>
                 </div>
                 <div className="w-full h-full flex flex-col gap-4">
                     <div className="w-full h-full flex justify-center items-center">
-                        <img src={card.href}/>
+                        <img src={card.href} className="h-full max-md:h-32 max-sm:h-28"/>
                     </div>
                 </div>
             </div>
