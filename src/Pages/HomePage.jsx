@@ -11,7 +11,7 @@ import HeroSection from '../Components/Sections/HeroSection';
 
 function HomePage() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen w-screen overflow-hidden relative">
       <NavBar/>
       <HeroSection/>
       <ProductSection/>

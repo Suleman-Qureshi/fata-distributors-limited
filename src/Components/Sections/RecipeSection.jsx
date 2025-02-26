@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion';
 function RecipeSection() {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], ['0%', '80%']);
       const [activeRecipe, setActiveRecipe] = useState('recipe1');
       const handleRecipeClick = (recipeId) => {
+        setActiveRecipe("");
         setActiveRecipe(recipeId);
       };
     const recipes = [
@@ -40,37 +38,19 @@ function RecipeSection() {
         }
       ];
   return (
-<section id="recipes-section" className="relative min-h-screen bg-black">
-        {/* Background Container with Parallax */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute inset-0 z-0"
-            style={{ y }}
-          >
-            <img 
-              src="/slide3.svg" 
-              alt="Background" 
-              className="w-full h-[120%] object-cover object-center transform -translate-y-1/4 inset-0 opacity-50"
-            />
-          </motion.div>
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-30 h-full">
-          <div className="container mx-auto px-6 pt-32">
-            {/* Title */}
-            <h1 className="text-white text-8xl font-bold relative mb-16">
+<section id="recipes-section" className="relative w-screen bg-[url('/slide3.svg')] bg-no-repeat bg-center bg-cover bg-fixed max-md:text-center overflow-hidden">
+        <div className="absolute left-0 w-screen h-full bg-black bg-opacity-65 top-0"> </div>
+          <div className="container mx-auto flex flex-col justify-center gap-8  px-20 max-md:px-10 max-sm:px-4 max-md:pt-4 max-md:pb-4">
+            <h1 className="text-white text-8xl max-md:text-6xl font-bold relative max-md:text-center max-md:w-full">
               RECIPES
             </h1>
-
-            {/* Content Grid */}
-            <div className="grid grid-cols-2 gap-0">
+            <div className="flex max-md:flex-col max-md:items-center gap-8 z-10">
               {/* Left Side - Recipe Names */}
-              <div className="flex flex-col space-y-4 border-r-4 border-[#006241]">
+              <div className="flex flex-col gap-2 border-r-4 border-[#006241] w-full  md:w-3/5">
                 {recipes.map((recipe) => (
                   <div 
                     key={recipe.id}
-                    className={`p-4 cursor-pointer ${
+                    className={`py-2 px-4 cursor-pointer ${
                       activeRecipe === recipe.id 
                         ? 'bg-[#006241]' 
                         : 'hover:bg-[#006241] transition-colors'
@@ -83,7 +63,7 @@ function RecipeSection() {
               </div>
 
               {/* Right Side - Recipe Details */}
-              <div className="flex flex-col relative min-h-[400px] pl-12">
+              <div className="flex flex-col gap-4 items-center relative min-h-[400px] pl-12 max-md:pl-0 w-full">
                 <div className="mb-8">
                   <h2 className="text-white text-2xl mb-4">DESCRIPTION:</h2>
                   <p className="text-white">
@@ -92,17 +72,17 @@ function RecipeSection() {
                 </div>
 
                 {/* Recipe Image - Positioned bottom right */}
-                <div className="absolute bottom-0 right-0 w-[300px]">
+                <div className="w-[300px]">
                   <img 
                     src={recipes.find(r => r.id === activeRecipe)?.image} 
                     alt={recipes.find(r => r.id === activeRecipe)?.name}
-                    className="w-full h-auto rounded-lg"
+                    className="h-full rounded-lg"
                   />
                 </div>
               </div>
             </div>
           </div>
-        </div>
+       
       </section>
   )
 }
