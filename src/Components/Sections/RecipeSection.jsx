@@ -46,7 +46,7 @@ function RecipeSection() {
             </h1>
             <div className="flex max-md:flex-col max-md:items-center gap-8 z-10">
               {/* Left Side - Recipe Names */}
-              <div className="flex flex-col gap-2 border-r-4 border-[#006241] w-full h-full md:w-3/5">
+              <div className="flex flex-col gap-2 border-r-4 border-[#006241] w-full  md:w-3/5">
                 {recipes.map((recipe) => (
                   <div 
                     key={recipe.id}

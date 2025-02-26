@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 function ContactSection() {
   return (
-    <section id="contact-section" className="py-20 relative z-0 overflow-hidden">
+    <section id="contact-section" className="py-20 relative w-screen z-0 overflow-hidden">
         {/* Decorative elements */}
         <img 
           src="/rice_crop.svg" 
@@ -12,16 +12,17 @@ function ContactSection() {
         />
        
         
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex max-md:flex-col-reverse gap-20">
+        <div className="container  px-6 relative z-10">
+          <div className="flex max-md:flex-col-reverse gap-9">
             {/* Left side - Contact Form */}
             <motion.div
              initial={{x:-200,opacity:0}}
              whileInView={{x:0,opacity:1}}
              transition={{type:"spring"}}
              viewport={{once:true,amount:0.2}}
+             className='w-full'
             >
-              <form className="flex flex-col gap-4">
+              <form className="flex flex-col gap-4 w-full">
                 <div>
                   <label className="text-xl mb-2 block">Name</label>
                   <input 
@@ -30,15 +31,15 @@ function ContactSection() {
                   />
                 </div>
 
-                <div className="flex max-md:flex-col gap-4">
-                  <div>
+                <div className="flex max-md:flex-col gap-4 w-full">
+                  <div className='w-full'>
                     <label className="text-xl mb-2 block">Email</label>
                     <input 
                       type="email" 
                       className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#006241]" 
                     />
                   </div>
-                  <div>
+                  <div className='w-full'>
                     <label className="text-xl mb-2 block">Phone Number</label>
                     <input 
                       type="tel" 
@@ -66,13 +67,13 @@ function ContactSection() {
 
             {/* Right side - Contact Information */}
             <div 
-              className="p-2 flex flex-col gap-4"
+              className="p-2 flex flex-col gap-4 w-full"
             >
               <motion.h2 initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="text-[#006241] text-7xl max-sm:text-5xl font-bold">
                 Contact Us
               </motion.h2>
               
-              <motion.p initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="text-xl  max-w-md">
+              <motion.p initial={{y:20}} whileInView={{y:0}} viewport={{once:true}} className="text-xl max-w-md">
                 For questions, technical assistance, or collaboration opportunities via the contact information provided.
               </motion.p>
 

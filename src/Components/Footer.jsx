@@ -5,7 +5,7 @@ function Footer() {
      <footer className="bg-[#006241] text-white py-6 max-lg:py-2">
             <div className="container mx-auto px-6 max-sm:px-2 max-lg: space-y-5">
             <div className="flex flex-col items-center lg:hidden">
-              <div className='w-full flex flex-col items-center pr-5'>
+              <div className='w-full flex flex-col items-center'>
                   <img 
                     src='./fata_logo.svg' 
                     alt="FATA Logo" 
@@ -14,13 +14,14 @@ function Footer() {
                   <p className="text-sm">We Provide the best</p>
                     </div>
                 </div>
-              <div className="flex justify-between items-start max-lg:flex-col max-lg:items-center max-lg:gap-4">
-                {/* Left Section */}
+              <div className="flex max-md:flex-col items-center max-md:gap-4">
                 <div className="flex w-full justify-center items-center">
-                  <div className="flex w-full justify-center">
-                  <span className="mr-4">Learn more</span>
-                    <div className="border-l-2 border-white mx-4"></div>
-                    <div className="flex flex-col space-y-2">
+                  <div className="flex justify-center gap-4">
+                  <span className="w-full">Learn more</span>
+                  <div>
+                    <div className="h-full w-0.5 bg-white"></div>
+                  </div>
+                    <div className="flex flex-col space-y-2 w-full">
                       <a href="#terms" className="hover:underline">Terms & Conditions</a>
                       <a href="#privacy" className="hover:underline">Privacy Policy</a>
                       <a href="#contact" className="hover:underline">Contact Us</a>
@@ -39,16 +40,16 @@ function Footer() {
                 </div>
     
                 {/* Right Section - Address */}
-                <div className="flex w-full justify-center items-center max-lg:translate-x-2.5">
-                  <div className="flex">
-                    <span className="mr-8">Address</span>
-                    <div className="flex">
-                      <div className="border-l-2 border-white h-full mx-4"></div>
-                      <div className="flex flex-col">
+                <div className="flex w-full justify-center items-center"> 
+                  <div className="flex gap-4">
+                    <span className="w-full">Address</span>
+                    <div>
+                      <div className="bg-white w-0.5 h-full"></div>
+                    </div>
+                      <div className="flex w-full flex-col">
                         <p>xyz batley, track Road</p>
                         <p>123 citry xyz</p>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
