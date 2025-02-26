@@ -52,7 +52,7 @@ function MyCarousel() {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className={`flex-shrink-0 transition-all overflow-hidden  w-[50vw] h-[50vw] md:h-[30vw] max-sm:h-[60vh]  flex items-center justify-center rounded-3xl bg-slate-400 bg-opacity-40 text-black ${activeIndex === index
+            className={`flex-shrink-0 transition-all overflow-hidden  w-[50vw] h-[50vw] md:h-[30vw] max-sm:h-[50vh]  flex items-center justify-center rounded-3xl bg-slate-400 bg-opacity-40 text-black ${activeIndex === index
                 ? "scale-105 shadow-xl shadow-black"
                 : "scale-90 opacity-75"
             }  mx-[10vw] text-2xl font-bold`}
