@@ -63,31 +63,3 @@ body{
 .footer-link:hover {
   color: rgba(255, 255, 255, 0.8);
 }
-@media screen and (min-height: 1110px) {
-  
-  .onLargeScreen{
-    height: 70vh;
-  }
-  
-}
-@media screen and (min-height: 950px) {
-  
-  .onLargeScreen{
-    height: 80vh;
-  }
-  
-}
-@media screen and (min-height: 850px) {
-  
-  .onLargeScreen{
-    height: 90vh;
-  }
-  
-}
-@media screen and (max-height: 850px) {
-  
-  .onLargeScreen{
-    height: 100vh;
-  }
-  
-}

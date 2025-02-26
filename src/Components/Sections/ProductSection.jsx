@@ -3,7 +3,7 @@ import { motion} from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Reactcarousel from '../React-arousel/Reactcarousel';
+import MyCarousel from '../React-arousel/MyCarousel';
 function ProductSection() {
   const swiperRef = useRef(null);
       useEffect(() => {
@@ -19,7 +19,7 @@ function ProductSection() {
       }, []);
 
   return (
-    <section className="p-20 max-md:p-10 max-sm:p-2 relative overflow-hidden w-screen h-screen onLargeScreen bg-white">
+    <section className=" py-2 relative overflow-hidden w-screen  bg-white">
         {/* Rice bag decoration */}
         <img 
           src="/rice_bag.svg" 
@@ -39,7 +39,7 @@ function ProductSection() {
           >
             FEATURED PRODUCTS
           </motion.h2>
-<Reactcarousel/>
+<MyCarousel/>
         </div>
       </section>
   )
